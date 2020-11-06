@@ -1,0 +1,8 @@
+scoreboard:
+  title: "&6&lPractice"
+  main:
+    - "%line%"
+    - "&fOnline&7: &6%online%"
+    - "&fIn Fights&7: &6%inFights%"
+    - "&fIn Queue&7: &6%inQueue%"
+    - "%line%"

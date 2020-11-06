@@ -1,0 +1,5 @@
+name: Practice
+version: ${git.commit.abbrev.id}
+main: cc.fyre.practice.Practice
+author: Fyre
+depend: [Carnage, Venom]
