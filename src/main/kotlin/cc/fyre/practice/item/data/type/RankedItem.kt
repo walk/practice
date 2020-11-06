@@ -21,7 +21,7 @@ class RankedItem(private val instance: Practice) : Item() {
     }
 
     override fun create(player: Player): ItemStack {
-        return ItemBuilder.of(Material.IRON_SWORD)
+        return ItemBuilder.of(Material.DIAMOND_SWORD)
             .name("${ChatColor.DARK_BLUE}${ChatColor.BOLD}» ${ChatColor.GREEN}${ChatColor.BOLD}Join ${ChatColor.AQUA}${ChatColor.BOLD}Ranked ${ChatColor.GREEN}${ChatColor.BOLD}Queue ${ChatColor.DARK_BLUE}${ChatColor.BOLD}«").build()
     }
 

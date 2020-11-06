@@ -29,7 +29,7 @@ class ItemHandler(private val instance: Practice) {
         this.instance.server.pluginManager.registerEvents(ItemListener(this.instance),this.instance)
     }
 
-    fun findItemByItemStack(itemStack: ItemStack, player: Player): Optional<Item> {
-        return this.items.stream().filter{it.isSimilar(player,itemStack)}.findFirst()
+    fun findItemByItemStack(itemStack: ItemStack, player: Player): Item? {
+        return this.items.firstOrNull{it.isSimilar(player,itemStack)}
     }
 }

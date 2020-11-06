@@ -21,7 +21,7 @@ class SpectateItem(private val instance: Practice) : Item() {
     }
 
     override fun create(player: Player): ItemStack {
-        return ItemBuilder.of(Material.IRON_SWORD)
+        return ItemBuilder.of(Material.WATCH)
             .name("${ChatColor.DARK_BLUE}${ChatColor.BOLD}» ${ChatColor.GREEN}${ChatColor.BOLD}Spectate Match ${ChatColor.DARK_BLUE}${ChatColor.BOLD}«").build()
     }
 

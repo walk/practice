@@ -25,7 +25,9 @@ class ItemListener(private val instance: Practice): Listener {
             return
         }
 
-        this.instance.itemHandler.findItemByItemStack(event.item,event.player).ifPresent{it.onInteract(event)}
+        val item = this.instance.itemHandler.findItemByItemStack(event.item,event.player)
+
+        item!!.onInteract(event)
     }
 
 }

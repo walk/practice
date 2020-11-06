@@ -17,11 +17,11 @@ import cc.fyre.practice.item.data.Item
  */
 class KitEditorItem(private val instance: Practice) : Item() {
     override fun slot(player: Player): Int {
-        return 4
+        return 8
     }
 
     override fun create(player: Player): ItemStack {
-        return ItemBuilder.of(Material.IRON_SWORD)
+        return ItemBuilder.of(Material.BOOK)
             .name("${ChatColor.DARK_BLUE}${ChatColor.BOLD}» ${ChatColor.GOLD}${ChatColor.BOLD}Kit Editor ${ChatColor.DARK_BLUE}${ChatColor.BOLD}«").build()
     }
 

@@ -21,8 +21,8 @@ class PartyHandler(private val instance: Practice) {
 
     }
 
-    fun findById(id: UUID): Optional<Party> {
-        return this.cache.stream().filter{it.members.contains(id)}.findFirst()
+    fun findById(id: UUID): Party {
+        return this.cache.stream().filter{it.members.contains(id)}.findFirst().orElse(Party(id))
     }
 
 }

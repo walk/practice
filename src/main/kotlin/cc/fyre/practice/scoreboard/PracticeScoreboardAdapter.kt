@@ -25,21 +25,21 @@ class PracticeScoreboardAdapter(private val instance: Practice) : ScoreboardAdap
 
     companion object {
 
-        val LINE = "${org.bukkit.ChatColor.GRAY}${org.bukkit.ChatColor.STRIKETHROUGH}${StringUtils.repeat("-",20)}"
+        val LINE = "${ChatColor.GRAY}${ChatColor.STRIKETHROUGH}${StringUtils.repeat("-",20)}"
 
     }
 
     override fun getTitle(player: Player): String {
 
-        var suffix = "${org.bukkit.ChatColor.DARK_RED}Practice"
+        var suffix = "${ChatColor.DARK_RED}Practice"
 
         val reboot = Carnage.instance.rebootHandler.findRemaining()
 
         if (Carnage.instance.rebootHandler.isActive() && reboot > 0L && reboot <= TimeUnit.MINUTES.toMillis(5L)) {
-            suffix = "${org.bukkit.ChatColor.RED}${TimeUtil.formatIntoMMSS(reboot)}"
+            suffix = "${ChatColor.RED}${TimeUtil.formatIntoMMSS(reboot)}"
         }
 
-        return "${org.bukkit.ChatColor.DARK_RED}${org.bukkit.ChatColor.BOLD} CavePvP ${org.bukkit.ChatColor.GRAY}┃ $suffix"
+        return "${ChatColor.DARK_RED}${ChatColor.BOLD} CavePvP ${ChatColor.GRAY}┃ $suffix"
     }
 
     override fun getScores(player: Player): List<String> {
@@ -48,16 +48,16 @@ class PracticeScoreboardAdapter(private val instance: Practice) : ScoreboardAdap
 
         toReturn.add(LINE)
 
-        val party = this.instance.partyHandler.findById(player.uniqueId).get()
+//        val party = this.instance.partyHandler.findById(player.uniqueId).get()
 
-        toReturn.add("${org.bukkit.ChatColor.WHITE}Online${org.bukkit.ChatColor.GRAY}: ${org.bukkit.ChatColor.RED}${this.instance.server.onlinePlayers.size}")
-        toReturn.add("${org.bukkit.ChatColor.WHITE}In Fights${org.bukkit.ChatColor.GRAY}: ${org.bukkit.ChatColor.RED}0")
-        toReturn.add("${org.bukkit.ChatColor.WHITE}In Queue${org.bukkit.ChatColor.GRAY}: ${org.bukkit.ChatColor.RED}0")
+        toReturn.add("${ChatColor.WHITE}Online${ChatColor.GRAY}: ${ChatColor.RED}${this.instance.server.onlinePlayers.size}")
+        toReturn.add("${ChatColor.WHITE}In Fights${ChatColor.GRAY}: ${ChatColor.RED}0")
+        toReturn.add("${ChatColor.WHITE}In Queue${ChatColor.GRAY}: ${ChatColor.RED}0")
 
-        if (party.members.size != 1) {
-            toReturn.add(LINE)
-            toReturn.add("${org.bukkit.ChatColor.BLUE}${org.bukkit.ChatColor.BOLD}Party${org.bukkit.ChatColor.GRAY}: ${org.bukkit.ChatColor.WHITE}${party.members.size}")
-        }
+//        if (party.members.size != 1) {
+//            toReturn.add(LINE)
+//            toReturn.add("${ChatColor.BLUE}${ChatColor.BOLD}Party${ChatColor.GRAY}: ${ChatColor.WHITE}${party.members.size}")
+//        }
 
         toReturn.add(" ")
         toReturn.add("${ChatColor.DARK_RED}cavepvp.org")
