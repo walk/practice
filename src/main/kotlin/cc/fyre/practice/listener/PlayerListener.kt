@@ -2,6 +2,7 @@ package cc.fyre.practice.listener
 
 import cc.fyre.carnage.menu.Menu
 import cc.fyre.practice.Practice
+import cc.fyre.practice.party.data.Party
 import org.bukkit.GameMode
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
@@ -31,6 +32,7 @@ class PlayerListener(private val instance: Practice): Listener {
 
     @EventHandler(priority = EventPriority.LOWEST)
     private fun onPlayerJoin(event: PlayerJoinEvent) {
+        this.instance.partyHandler.cache.add(Party(event.player.uniqueId))
 
         event.player.foodLevel = 20
         event.player.health = 20.0

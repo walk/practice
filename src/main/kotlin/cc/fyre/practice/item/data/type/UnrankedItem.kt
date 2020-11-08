@@ -22,7 +22,7 @@ class UnrankedItem(private val instance: Practice) : Item() {
 
     override fun create(player: Player): ItemStack {
         return ItemBuilder.of(Material.IRON_SWORD)
-            .name("${ChatColor.DARK_BLUE}${ChatColor.BOLD}» ${ChatColor.GREEN}${ChatColor.BOLD}Join ${ChatColor.GRAY}${ChatColor.BOLD}Unranked ${ChatColor.GREEN}${ChatColor.BOLD}Queue ${ChatColor.DARK_BLUE}${ChatColor.BOLD}«").build()
+            .name("${ChatColor.RED}${ChatColor.BOLD}» ${ChatColor.GRAY}${ChatColor.BOLD}Unranked ${ChatColor.GREEN}${ChatColor.BOLD}Queue ${ChatColor.RED}${ChatColor.BOLD}«").build()
     }
 
     override fun onInteract(event: PlayerInteractEvent) {

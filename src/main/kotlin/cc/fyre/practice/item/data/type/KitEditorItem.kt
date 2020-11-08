@@ -22,7 +22,7 @@ class KitEditorItem(private val instance: Practice) : Item() {
 
     override fun create(player: Player): ItemStack {
         return ItemBuilder.of(Material.BOOK)
-            .name("${ChatColor.DARK_BLUE}${ChatColor.BOLD}» ${ChatColor.GOLD}${ChatColor.BOLD}Kit Editor ${ChatColor.DARK_BLUE}${ChatColor.BOLD}«").build()
+            .name("${ChatColor.RED}${ChatColor.BOLD}» ${ChatColor.GOLD}${ChatColor.BOLD}Kit Editor ${ChatColor.RED}${ChatColor.BOLD}«").build()
     }
 
     override fun onInteract(event: PlayerInteractEvent) {

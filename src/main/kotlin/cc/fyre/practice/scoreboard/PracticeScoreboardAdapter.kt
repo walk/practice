@@ -31,7 +31,7 @@ class PracticeScoreboardAdapter(private val instance: Practice) : ScoreboardAdap
 
     override fun getTitle(player: Player): String {
 
-        var suffix = "${ChatColor.DARK_RED}Practice"
+        var suffix = "${ChatColor.GOLD}${ChatColor.BOLD}Practice"
 
         val reboot = Carnage.instance.rebootHandler.findRemaining()
 
@@ -39,7 +39,7 @@ class PracticeScoreboardAdapter(private val instance: Practice) : ScoreboardAdap
             suffix = "${ChatColor.RED}${TimeUtil.formatIntoMMSS(reboot)}"
         }
 
-        return "${ChatColor.DARK_RED}${ChatColor.BOLD} CavePvP ${ChatColor.GRAY}┃ $suffix"
+        return suffix
     }
 
     override fun getScores(player: Player): List<String> {
@@ -48,19 +48,18 @@ class PracticeScoreboardAdapter(private val instance: Practice) : ScoreboardAdap
 
         toReturn.add(LINE)
 
-//        val party = this.instance.partyHandler.findById(player.uniqueId).get()
+        val party = this.instance.partyHandler.findById(player.uniqueId)
 
-        toReturn.add("${ChatColor.WHITE}Online${ChatColor.GRAY}: ${ChatColor.RED}${this.instance.server.onlinePlayers.size}")
-        toReturn.add("${ChatColor.WHITE}In Fights${ChatColor.GRAY}: ${ChatColor.RED}0")
-        toReturn.add("${ChatColor.WHITE}In Queue${ChatColor.GRAY}: ${ChatColor.RED}0")
+        toReturn.add("${ChatColor.WHITE}Online${ChatColor.GRAY}: ${ChatColor.GOLD}${this.instance.server.onlinePlayers.size}")
+        toReturn.add("${ChatColor.WHITE}In Fights${ChatColor.GRAY}: ${ChatColor.GOLD}0")
+        toReturn.add("${ChatColor.WHITE}In Queue${ChatColor.GRAY}: ${ChatColor.GOLD}0")
 
-//        if (party.members.size != 1) {
-//            toReturn.add(LINE)
-//            toReturn.add("${ChatColor.BLUE}${ChatColor.BOLD}Party${ChatColor.GRAY}: ${ChatColor.WHITE}${party.members.size}")
-//        }
+        if (party.members.size != 1) {
+            toReturn.add("${ChatColor.WHITE}Party${ChatColor.GRAY}: ${ChatColor.GOLD}${party.members.size}")
+        }
 
         toReturn.add(" ")
-        toReturn.add("${ChatColor.DARK_RED}cavepvp.org")
+        toReturn.add("${ChatColor.GRAY}cavepvp.org")
         toReturn.add(LINE)
 
         return toReturn

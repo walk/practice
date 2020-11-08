@@ -22,7 +22,7 @@ class JoinEventItem(private val instance: Practice) : Item() {
 
     override fun create(player: Player): ItemStack {
         return ItemBuilder.of(Material.EMERALD)
-            .name("${ChatColor.DARK_BLUE}${ChatColor.BOLD}» ${ChatColor.DARK_PURPLE}${ChatColor.BOLD}Join Event ${ChatColor.DARK_BLUE}${ChatColor.BOLD}«").build()
+            .name("${ChatColor.RED}${ChatColor.BOLD}» ${ChatColor.DARK_PURPLE}${ChatColor.BOLD}Join Event ${ChatColor.RED}${ChatColor.BOLD}«").build()
     }
 
     override fun onInteract(event: PlayerInteractEvent) {
