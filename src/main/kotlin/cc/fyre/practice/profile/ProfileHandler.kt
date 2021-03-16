@@ -2,6 +2,7 @@ package cc.fyre.practice.profile
 
 import cc.fyre.practice.Practice
 import cc.fyre.practice.profile.data.Profile
+import cc.fyre.practice.profile.listener.ProfileListener
 import com.mongodb.client.MongoCollection
 import org.bson.Document
 import java.util.*
@@ -20,7 +21,7 @@ class ProfileHandler(private val instance: Practice) {
 
     init {
 
-
+        this.instance.server.pluginManager.registerEvents(ProfileListener(this.instance),this.instance)
 
     }
 

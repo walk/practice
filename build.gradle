@@ -23,25 +23,19 @@ repositories {
     maven { url 'https://jitpack.io' }
     mavenLocal()
     mavenCentral()
-
-    flatDir {
-        dirs 'libs'
-    }
 }
 
 dependencies {
     compile 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.3.71'
     compile 'org.jetbrains.kotlin:kotlin-reflect:1.3.71'
+
     compile "org.apache.commons:commons-pool2:2.6.0"
     compile "org.apache.commons:commons-lang3:3.7"
 
-    compileOnly 'cc.fyre.venom:bukkit:1.0-SNAPSHOT'
-    compileOnly 'cc.fyre.carnage:carnage:1.0-SNAPSHOT'
-    compileOnly 'cc.fyre:spigot-server:1.7.10-R0.1-SNAPSHOT'
+    compile "com.google.code.gson:gson:2.8.5"
 
-    annotationProcessor 'org.projectlombok:lombok:1.18.12'
-
-    compileOnly fileTree(dir: 'libs', include: ['*.jar'])
+    compileOnly 'net.hylist:spigot-server:1.7.10-R0.1-SNAPSHOT'
+    compileOnly 'net.frozenorb:qLib:1.0'
 }
 
 apply plugin: "kotlin"

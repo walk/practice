@@ -1,14 +1,14 @@
 package cc.fyre.practice.party.command
 
-import cc.fyre.carnage.command.data.command.Command
 import cc.fyre.practice.Practice
+import net.frozenorb.qlib.command.Command
 import org.bukkit.ChatColor
 import org.bukkit.entity.Player
 
 object PartyOpenCommand {
 
     @JvmStatic
-    @Command(["party open"])
+    @Command(names = ["party open"],permission = "")
     fun execute(player: Player) {
 
         val party = Practice.instance.partyHandler.findById(player.uniqueId)

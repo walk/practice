@@ -1,6 +1,5 @@
 package cc.fyre.practice.item.data.type
 
-import cc.fyre.carnage.util.item.ItemBuilder
 import org.bukkit.ChatColor
 import org.bukkit.Material
 import org.bukkit.entity.Player
@@ -8,6 +7,7 @@ import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.inventory.ItemStack
 import cc.fyre.practice.Practice
 import cc.fyre.practice.item.data.Item
+import net.frozenorb.qlib.util.ItemBuilder
 
 /**
  * @author Brew
@@ -17,12 +17,14 @@ import cc.fyre.practice.item.data.Item
  */
 class JoinEventItem(private val instance: Practice) : Item() {
     override fun slot(player: Player): Int {
-        return 7
+        return this.instance.config.getInt("item.joinevent.slot")
     }
 
     override fun create(player: Player): ItemStack {
-        return ItemBuilder.of(Material.EMERALD)
-            .name("${ChatColor.RED}${ChatColor.BOLD}» ${ChatColor.DARK_PURPLE}${ChatColor.BOLD}Join Event ${ChatColor.RED}${ChatColor.BOLD}«").build()
+        return ItemBuilder.of(Material.valueOf(this.instance.config.getString("item.joinevent.material")))
+            .name(ChatColor.translateAlternateColorCodes('&',this.instance.config.getString("item.joinevent.name")))
+            .setLore(this.instance.config.getStringList("item.joinevent.lore"))
+            .build()
     }
 
     override fun onInteract(event: PlayerInteractEvent) {

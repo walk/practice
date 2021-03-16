@@ -1,13 +1,10 @@
 package cc.fyre.practice.database
 
 import cc.fyre.practice.Practice
-import cc.fyre.symbiote.SymbioteAPI
-import cc.fyre.symbiote.type.RedisSymbioteAPI
-import cc.fyre.venom.database.jedis.CustomPoolConfig
 import com.mongodb.MongoClient
 import com.mongodb.ServerAddress
 import com.mongodb.client.MongoDatabase
-import redis.clients.jedis.JedisPool
+import com.mongodb.client.model.UpdateOptions
 
 /**
  * @author Brew
@@ -17,19 +14,19 @@ import redis.clients.jedis.JedisPool
  */
 class DatabaseHandler(private val instance: Practice) {
 
-    val symbiote: SymbioteAPI
-
     val mongoDB: MongoDatabase
-    val mongoPool = MongoClient(ServerAddress("51.79.73.197",27017))
-    val redisPool = JedisPool(CustomPoolConfig(),"51.79.73.197",6379,30000)
+    val mongoPool = MongoClient(ServerAddress("localhost",27017))
 
     init {
-        this.mongoDB = this.mongoPool.getDatabase("Practice")
-        this.symbiote = RedisSymbioteAPI(this.redisPool,"practice")
+        this.mongoDB = this.mongoPool.getDatabase("practice")
     }
 
     fun dispose() {
-        this.redisPool.close()
+        this.mongoPool.close()
+    }
+
+    companion object {
+        val UPDATE_OPTIONS: UpdateOptions = UpdateOptions().upsert(true)
     }
 
 }

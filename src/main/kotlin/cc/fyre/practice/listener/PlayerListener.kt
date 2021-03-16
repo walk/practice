@@ -1,8 +1,8 @@
 package cc.fyre.practice.listener
 
-import cc.fyre.carnage.menu.Menu
 import cc.fyre.practice.Practice
 import cc.fyre.practice.party.data.Party
+import net.frozenorb.qlib.menu.Menu
 import org.bukkit.GameMode
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler

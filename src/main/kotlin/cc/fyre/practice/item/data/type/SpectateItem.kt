@@ -1,6 +1,6 @@
 package cc.fyre.practice.item.data.type
 
-import cc.fyre.carnage.util.item.ItemBuilder
+import net.frozenorb.qlib.util.ItemBuilder
 import org.bukkit.ChatColor
 import org.bukkit.Material
 import org.bukkit.entity.Player
@@ -17,12 +17,14 @@ import cc.fyre.practice.item.data.Item
  */
 class SpectateItem(private val instance: Practice) : Item() {
     override fun slot(player: Player): Int {
-        return 4
+        return this.instance.config.getInt("item.spectate.slot")
     }
 
     override fun create(player: Player): ItemStack {
-        return ItemBuilder.of(Material.WATCH)
-            .name("${ChatColor.RED}${ChatColor.BOLD}» ${ChatColor.GREEN}${ChatColor.BOLD}Spectate Match ${ChatColor.RED}${ChatColor.BOLD}«").build()
+        return ItemBuilder.of(Material.valueOf(this.instance.config.getString("item.spectate.material")))
+            .name(ChatColor.translateAlternateColorCodes('&',this.instance.config.getString("item.spectate.name")))
+            .setLore(this.instance.config.getStringList("item.spectate.lore"))
+            .build()
     }
 
     override fun onInteract(event: PlayerInteractEvent) {

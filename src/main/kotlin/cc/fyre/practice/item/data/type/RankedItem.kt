@@ -1,6 +1,6 @@
 package cc.fyre.practice.item.data.type
 
-import cc.fyre.carnage.util.item.ItemBuilder
+import net.frozenorb.qlib.util.ItemBuilder
 import org.bukkit.ChatColor
 import org.bukkit.Material
 import org.bukkit.entity.Player
@@ -8,6 +8,7 @@ import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.inventory.ItemStack
 import cc.fyre.practice.Practice
 import cc.fyre.practice.item.data.Item
+import cc.fyre.practice.item.menu.QueueMenu
 
 /**
  * @author Brew
@@ -17,16 +18,17 @@ import cc.fyre.practice.item.data.Item
  */
 class RankedItem(private val instance: Practice) : Item() {
     override fun slot(player: Player): Int {
-        return 1
+        return this.instance.config.getInt("item.ranked.slot")
     }
 
     override fun create(player: Player): ItemStack {
-        return ItemBuilder.of(Material.DIAMOND_SWORD)
-            .name("${ChatColor.RED}${ChatColor.BOLD}» ${ChatColor.AQUA}${ChatColor.BOLD}Ranked ${ChatColor.GREEN}${ChatColor.BOLD}Queue ${ChatColor.RED}${ChatColor.BOLD}«").build()
+        return ItemBuilder.of(Material.valueOf(this.instance.config.getString("item.ranked.material")))
+            .name(ChatColor.translateAlternateColorCodes('&',this.instance.config.getString("item.ranked.name")))
+            .setLore(this.instance.config.getStringList("item.ranked.lore"))
+            .build()
     }
 
     override fun onInteract(event: PlayerInteractEvent) {
-        // @TODO
-        // Open Ranked Matchmaking Menu
+        QueueMenu(true).openMenu(event.player)
     }
 }

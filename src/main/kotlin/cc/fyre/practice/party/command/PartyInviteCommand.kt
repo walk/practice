@@ -1,16 +1,16 @@
 package cc.fyre.practice.party.command
 
-import cc.fyre.carnage.command.data.command.Command
-import cc.fyre.carnage.command.data.parameter.Parameter
 import cc.fyre.practice.Practice
 import mkremins.fanciful.FancyMessage
+import net.frozenorb.qlib.command.Command
+import net.frozenorb.qlib.command.Param
 import org.bukkit.ChatColor
 import org.bukkit.entity.Player
 
 object PartyInviteCommand {
 
-    @Command(["party invite"])
-    fun execute(player: Player, @Parameter("player")target: Player) {
+    @Command(names = ["party invite"],permission = "")
+    fun execute(player: Player,@Param(name = "target")target: Player) {
 
         val party = Practice.instance.partyHandler.findById(player.uniqueId)
 

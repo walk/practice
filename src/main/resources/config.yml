@@ -1,8 +1,45 @@
 scoreboard:
   title: "&6&lPractice"
   main:
-    - "%line%"
-    - "&fOnline&7: &6%online%"
-    - "&fIn Fights&7: &6%inFights%"
-    - "&fIn Queue&7: &6%inQueue%"
-    - "%line%"
+    - "&fOnline&7: &6{online}"
+    - "&fIn Fights&7: &6{inFights}"
+    - "&fIn Queue&7: &6{inQueue}"
+  party:
+    - "&fParty: &6{party}"
+  queue:
+    - "&6{gameType} {type}"
+    - "&fElapsed: &6{time}"
+item:
+  spectate:
+    slot: 4
+    material: "WATCH"
+    name: "&aSpectate Games"
+    lore:
+      - ""
+  ranked:
+    slot: 1
+    material: "DIAMOND_SWORD"
+    name: "&cRanked Queue"
+    lore:
+      - ""
+  unranked:
+    slot: 0
+    material: "IRON_SWORD"
+    name: "&aUnranked Queue"
+    lore:
+      - ""
+  kiteditor:
+    slot: 7
+    material: "CHEST"
+    name: "&5Kit Editor"
+    lore:
+      - ""
+  joinevent:
+    slot: 8
+    material: "NETHER_STAR"
+    name: "&bJoin Event"
+    lore:
+      - ""
+
+
+

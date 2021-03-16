@@ -1,16 +1,16 @@
 package cc.fyre.practice.party.command
 
-import cc.fyre.carnage.command.data.command.Command
-import cc.fyre.carnage.command.data.parameter.Parameter
 import cc.fyre.practice.Practice
+import net.frozenorb.qlib.command.Command
+import net.frozenorb.qlib.command.Param
 import org.bukkit.ChatColor
 import org.bukkit.entity.Player
 
 object PartyKickCommand {
 
     @JvmStatic
-    @Command(["party kick"])
-    fun execute(player: Player, @Parameter("player")target: Player) {
+    @Command(names = ["party kick"],permission = "")
+    fun execute(player: Player, @Param(name = "player")target: Player) {
         val party = Practice.instance.partyHandler.findById(player.uniqueId)
 
         if(party.creator != player.uniqueId || party.captains.contains(player.uniqueId)) {

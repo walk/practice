@@ -1,12 +1,12 @@
 package cc.fyre.practice.party.command
 
-import cc.fyre.carnage.command.data.command.Command
+import net.frozenorb.qlib.command.Command
 import org.bukkit.entity.Player
 
 object PartyHelpCommand {
 
     @JvmStatic
-    @Command(["p", "p help", "party", "party help"])
+    @Command(names = ["p", "p help", "party", "party help"],permission = "")
     fun execute(player: Player) {
 
         arrayOf(

@@ -2,7 +2,6 @@ package cc.fyre.practice.profile.listener
 
 import cc.fyre.practice.Practice
 import cc.fyre.practice.profile.data.Profile
-import cc.fyre.venom.profile.exception.ProfileLoadException
 import com.mongodb.client.model.Filters
 import org.bukkit.ChatColor
 import org.bukkit.event.EventHandler
@@ -24,11 +23,11 @@ class ProfileListener(private val instance: Practice) : Listener {
 
         val profile: Profile = if (document == null) Profile(event.uniqueId) else {
             try {
-                Practice.GSON.fromJson(document.toJson(),Profile::class.java)
+                Practice.instance.gson.fromJson(document.toJson(),Profile::class.java)
             } catch (ex: Exception) {
                 event.loginResult = AsyncPlayerPreLoginEvent.Result.KICK_OTHER
                 event.kickMessage = "${ChatColor.RED}There was an issue contacting the API, please try again later."
-                throw ProfileLoadException(event.uniqueId,ex.message!!)
+                throw IllegalStateException("Failed to query ${event.name}'s profile.")
             }
         }
     }
